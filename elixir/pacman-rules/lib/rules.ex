@@ -23,9 +23,15 @@ defmodule Rules do
   def score?(_touching_power_pellet, _touching_dot),
     do: false
 
-  def lose?(power_pellet_active, touching_ghost) do
-    # Please implement the lose?/2 function
-  end
+  @doc """
+  Returns true if is touching a ghost and does not have a power pellet active
+  """
+  @spec lose?(Boolean.t(), Boolean.t()) :: Boolean.t()
+  def lose?(false = _power_pellet_active, true = _touching_ghost),
+    do: true
+
+  def lose?(_power_pellet_active, _touching_ghost),
+    do: false
 
   def win?(has_eaten_all_dots, power_pellet_active, touching_ghost) do
     # Please implement the win?/3 function
