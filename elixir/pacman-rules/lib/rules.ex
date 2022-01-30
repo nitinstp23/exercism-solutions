@@ -33,7 +33,14 @@ defmodule Rules do
   def lose?(_power_pellet_active, _touching_ghost),
     do: false
 
-  def win?(has_eaten_all_dots, power_pellet_active, touching_ghost) do
-    # Please implement the win?/3 function
+  @doc """
+  Returns true if has eaten all of the dots and has not lost
+  """
+  @spec win?(Boolean.t(), Boolean.t(), Boolean.t()) :: Boolean.t()
+  def win?(true = _has_eaten_all_dots, power_pellet_active, touching_ghost) do
+    not lose?(power_pellet_active, touching_ghost)
   end
+
+  def win?(_has_eaten_all_dots, _power_pellet_active, _touching_ghost),
+    do: false
 end
