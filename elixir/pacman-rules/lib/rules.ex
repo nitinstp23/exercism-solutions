@@ -10,9 +10,18 @@ defmodule Rules do
   def eat_ghost?(_power_pellet_active, _touching_ghost),
     do: false
 
-  def score?(touching_power_pellet, touching_dot) do
-    # Please implement the score?/2 function
-  end
+  @doc """
+  Returns true if touching a power pellet or a dot
+  """
+  @spec score?(Boolean.t(), Boolean.t()) :: Boolean.t()
+  def score?(true = _touching_power_pellet, _touching_dot),
+    do: true
+
+  def score?(_touching_power_pellet, true = _touching_dot),
+    do: true
+
+  def score?(_touching_power_pellet, _touching_dot),
+    do: false
 
   def lose?(power_pellet_active, touching_ghost) do
     # Please implement the lose?/2 function
